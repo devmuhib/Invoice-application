@@ -1,26 +1,421 @@
-html,
-body {
+/* ======= google fonts ============= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+/* ======== css variables ========= */
+:root {
+  --primary-color: #7c5dfa;
+  --secondary-color: #1e2139;
+  --body-bg: #141625;
+  --paid-status-bg: #1f2c3f;
+  --paid-status-color: #32cf9b;
+  --pending-status-bg: rgba(255, 143, 0, 0.06);
+  --pending-status-color: #ff8f00;
+  --small-text-color: #888eb0;
+  --draft-bg: #252945;
+  --delete-btn-bg: #ec5757;
+  --edit-btn-bg: #252945;
+}
+
+/* ======== base style ============ */
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--body-bg);
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: unset;
 }
 
-* {
-  box-sizing: border-box;
+.btn {
+  padding: 7px 25px;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #fff;
+}
+
+p {
+  font-size: 0.8rem;
+  color: var(--small-text-color);
+}
+
+.main__container {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: calc(100% - 13%);
+  padding: 30px 0px;
+}
+
+.pending__status,
+.paid__status,
+.draft__status,
+.edit__btn,
+.delete__btn,
+.mark__as-btn,
+.draft__btn {
+  padding: 10px 25px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.paid__status {
+  background: var(--paid-status-bg);
+  color: var(--paid-status-color);
+}
+
+.pending__status {
+  background: var(--pending-status-bg);
+  color: var(--pending-status-color);
+}
+
+/* ========== sidebar css ========== */
+.sidebar {
+  width: 120px;
+  height: 100vh;
+  background: var(--secondary-color) !important;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.sidebar__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar__header,
+.sidebar__bottom {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 20px 20px 0px;
+  background: var(--primary-color);
+}
+
+.sidebar__bottom {
+  background: var(--secondary-color) !important;
+  border-top: 1px solid var(--primary-color);
+}
+
+.sidebar__bottom img {
+  border-radius: 50%;
+}
+
+/* =========== home page style start =========== */
+.invoice__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.invoice__header-logo h3 {
+  color: #fff;
+}
+
+.invoice__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background: var(--secondary-color);
+  border-radius: 0.5rem;
+  margin-bottom: 1.9rem;
+  transition: 1s;
+  color: #fff;
+  cursor: pointer;
+}
+
+.invoice__item:hover {
+  border: 1px solid var(--primary-color);
+  transform: scaleY(1.1);
+}
+
+.invoice__container {
+  padding-bottom: 200px !important;
+}
+
+/* =========== home page style end =========== */
+/* =========== invoice details style start========= */
+.back__btn {
+  margin-bottom: 1.9rem;
+}
+
+.back__btn h6 {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.details__status {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+}
+
+.invoice__details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  border-radius: 0.5rem;
+  margin-bottom: 1.9rem;
+  background: var(--secondary-color);
+}
+
+.details__btns {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.mark__as-btn {
+  width: 130px !important;
+  padding: 10px 5px !important;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.delete__btn {
+  background: var(--delete-btn-bg);
+  color: #fff;
+}
+
+.edit__btn {
+  background: var(--edit-btn-bg);
+  color: #fff;
+}
+
+.invoice__details {
+  background: var(--secondary-color);
+  padding: 30px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.details__box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.9rem;
+}
+
+.invoice__created-date {
+  margin-bottom: 1.9rem;
+}
+
+.invoice__created-date p,
+.invoice__payment {
+  margin-bottom: 5px;
+}
+
+.invoice__client-address p {
+  margin-bottom: 5px;
+}
+
+.invoice__client-address h4 {
+  margin-bottom: 10px;
+}
+
+.invoice__item-box {
+  background: #252945;
+  padding: 30px;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.list {
+  list-style: none;
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.list__item-box {
+  width: 25% !important;
+  text-align: right !important;
+}
+
+.item__name-box {
+  width: 50% !important;
+}
+
+.grand__total {
+  background: #0c0e16;
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  border-radius: 0px 0px 7px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========== invoice details style end========= */
+/* =========== add new page style start ======== */
+.new__invoice {
+  width: 60%;
+  margin: auto;
+}
+
+.new__invoice-header {
+  margin-bottom: 1.9rem;
+}
+
+.form__group input {
+  padding: 12px 20px;
+  width: 100%;
+  border-radius: 5px;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.form__group {
+  margin-bottom: 1.9rem;
+}
+
+.form__group p {
+  margin-bottom: 10px;
+}
+
+.inline__form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inline__group {
+  width: 48%;
+}
+
+.new__invoice-body {
+  padding-bottom: 40px;
+}
+
+.bill__title {
+  margin-bottom: 20px;
+}
+
+.bill__to {
+  margin-top: 50px;
+}
+
+.invoice__items {
+  margin-top: 70px;
+}
+
+.invoice__items h3 {
+  margin-bottom: 30px;
+}
+
+.add__item-btn {
+  width: 100%;
+  background: var(--secondary-color);
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+
+  outline: none;
+  color: #fff;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.draft__btn {
+  background: #1f2c3f;
+  color: #fff;
+  margin-right: 30px;
+  width: 150px !important;
+}
+
+.new__invoice__btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+/* =========== add new page style end ======== */
+
+.disable {
+  cursor: none;
+  pointer-events: none;
+  opacity: 50%;
+}
+
+/* ============== modal style ============ */
+.delete__modal {
+  background: rgba(9, 10, 17, 0.76);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 330px;
+  padding: 30px;
+  background: var(--secondary-color);
+  z-index: 99999999;
+  border-radius: 5px;
+}
+
+.modal h3 {
+  margin-bottom: 15px;
+}
+
+.modal p {
+  font-size: 0.8rem;
+  line-height: 25px;
+}
+
+.modal__btns {
+  margin-top: 25px;
+}
+
+.modal__btns button:first-child {
+  background: #fff;
+  color: var(--secondary-color);
+}
+
+.showModal {
+  display: block;
 }
