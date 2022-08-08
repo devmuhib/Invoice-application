@@ -47,34 +47,19 @@ const AddNew = () => {
   // submit data to the database
   const createInvoice = async (status) => {
     try {
-      const senderStreet = senderStreet.current.value;
-      const senderCity = senderCity.current.value;
-      const senderPostalCode = senderPostalCode.current.value;
-      const senderCountry = senderCountry.current.value;
-      const clientStreet = clientStreet.current.value;
-      const clientCity = clientCity.current.value;
-      const clientPostalCode = clientPostalCode.current.value;
-      const clientCountry = clientCountry.current.value;
-      const clientName = clientName.current.value;
-      const clientEmail = clientEmail.current.value;
-      const description = description.current.value;
-      const createdAt = createdAt.current.value;
-      const paymentDue = createdAt.current.value;
-      const paymentTerms = paymentTerms.current.value;
-
       if (
-        senderStreet === "" ||
-        senderCity === "" ||
-        senderPostalCode === "" ||
-        senderCountry === "" ||
-        clientName === "" ||
-        clientEmail === "" ||
-        clientStreet === "" ||
-        clientCity === "" ||
-        clientPostalCode === "" ||
-        clientCountry === "" ||
-        description === "" ||
-        createdAt === "" ||
+        senderStreet.current.value === "" ||
+        senderCity.current.value === "" ||
+        senderPostalCode.current.value === "" ||
+        senderCountry.current.value === "" ||
+        clientName.current.value === "" ||
+        clientEmail.current.value === "" ||
+        clientStreet.current.value === "" ||
+        clientCity.current.value === "" ||
+        clientPostalCode.current.value === "" ||
+        clientCountry.current.value === "" ||
+        description.current.value === "" ||
+        createdAt.current.value === "" ||
         items.length === 0
       ) {
         toast.warning("All fields are required. Must provide valid data");
@@ -85,22 +70,22 @@ const AddNew = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            senderStreet,
-            senderCity,
-            senderPostalCode,
-            senderCountry,
-            clientName,
-            clientEmail,
-            clientStreet,
-            clientCity,
-            clientPostalCode,
-            clientCountry,
-            description,
-            createdAt,
-            paymentDue,
-            paymentTerms,
+            senderStreet: senderStreet.current.value,
+            senderCity: senderCity.current.value,
+            senderPostalCode: senderPostalCode.current.value,
+            senderCountry: senderCountry.current.value,
+            clientName: clientName.current.value,
+            clientEmail: clientEmail.current.value,
+            clientStreet: clientStreet.current.value,
+            clientCity: clientCity.current.value,
+            clientPostalCode: clientPostalCode.current.value,
+            clientCountry: clientCountry.current.value,
+            description: description.current.value,
+            createdAt: createdAt.current.value,
+            paymentDue: createdAt.current.value,
+            paymentTerms: paymentTerms.current.value,
             status: status,
-            items,
+            items: items,
             total: totalAmount,
           }),
         });
