@@ -47,6 +47,23 @@ const AddNew = () => {
   // submit data to the database
   const createInvoice = async (status) => {
     try {
+      if (
+        senderStreet.current.value === "" ||
+        senderCity.current.value === "" ||
+        senderPostalCode.current.value === "" ||
+        senderCountry.current.value === "" ||
+        clientName.current.value === "" ||
+        clientEmail.current.value === "" ||
+        clientStreet.current.value === "" ||
+        clientCity.current.value === "" ||
+        clientPostalCode.current.value === "" ||
+        clientCountry.current.value === "" ||
+        description.current.value === "" ||
+        createdAt.current.value === "" ||
+        items.length === 0
+      ) {
+        toast.warning("All fields are required. Must provide valid data");
+      }
       const res = await fetch("/api/add-new", {
         method: "POST",
         headers: {
